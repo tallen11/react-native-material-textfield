@@ -26,6 +26,7 @@ export default class Label extends PureComponent {
     tintColor: PropTypes.string.isRequired,
     baseColor: PropTypes.string.isRequired,
     errorColor: PropTypes.string.isRequired,
+    overrideColor: PropTypes.string,
 
     animationDuration: PropTypes.number.isRequired,
 
@@ -95,12 +96,24 @@ export default class Label extends PureComponent {
       ...props
     } = this.props;
 
-    let color = restricted?
-      errorColor:
-      focus.interpolate({
-        inputRange: [-1, 0, 1],
-        outputRange: [errorColor, baseColor, tintColor],
-      });
+    let color = this.props.overrideColor ? 
+          this.props.overrideColor : 
+          focus.interpolate({
+            inputRange: [-1, 0, 1],
+            outputRange: [errorColor, baseColor, tintColor],
+          });
+    
+  
+    if (restricted) {
+      color = errorColor;
+    }
+
+    // let color = restricted?
+    //   errorColor:
+    //   focus.interpolate({
+    //     inputRange: [-1, 0, 1],
+    //     outputRange: [errorColor, baseColor, tintColor],
+    //   });
 
     let top = input.interpolate({
       inputRange: [0, 1],

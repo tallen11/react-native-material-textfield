@@ -70,6 +70,7 @@ export default class TextField extends PureComponent {
     tintColor: PropTypes.string,
     textColor: PropTypes.string,
     baseColor: PropTypes.string,
+    labelColor: PropTypes.string,
 
     label: PropTypes.string.isRequired,
     title: PropTypes.string,
@@ -347,6 +348,7 @@ export default class TextField extends PureComponent {
       baseColor,
       textColor,
       errorColor,
+      labelColor,
       lineWidth,
       activeLineWidth,
       containerStyle,
@@ -489,6 +491,7 @@ export default class TextField extends PureComponent {
       tintColor,
       baseColor,
       errorColor,
+      overrideColor: labelColor,
       animationDuration,
       active,
       focused,
